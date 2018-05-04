@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.6`, `8.5-php5.6`, `8.5` (*8.5/5.6/Dockerfile*)](https://github.com/zendtech/php-zendserver-docker/blob/4f18a2fe0e86275c4c21335b669c8847f44bbff6/8.5/5.6/Dockerfile)
--	[`9.1`, `latest` (*9.1/7.1/Dockerfile*)](https://github.com/zendtech/php-zendserver-docker/blob/4f18a2fe0e86275c4c21335b669c8847f44bbff6/9.1/7.1/Dockerfile)
+**No supported tags found!**
+
+It is very likely that `php-zendserver` does not support the currently selected architecture (`s390x`).
 
 # Quick reference
 
@@ -62,15 +63,15 @@ Zend Server is the platform that enables Continuous Delivery, which provides con
 ### Additional Resources
 
 -	[http://www.zend.com/](http://www.zend.com/)
--	[http://kb.zend.com/](http://kb.zend.com/)
+-	[http://support.roguewave.com/](http://support.roguewave.com/)
 -	[http://files.zend.com/help/Zend-Server/zend-server.htm#faqs.htm](http://files.zend.com/help/Zend-Server/zend-server.htm#faqs.htm)
 -	[http://files.zend.com/help/Zend-Server/zend-server.htm#getting\_started.htm](http://files.zend.com/help/Zend-Server/zend-server.htm#getting_started.htm)
 
 # PHP-ZendServer
 
-This is a cluster-enabled version of a Dockerized Zend Server 8.0 container. With Zend Server on Docker, you'll get your PHP applications up and running on a highly available PHP production environment which includes, amongst other features, a highly reliable PHP stack, application monitoring, troubleshooting, and the new and innovative new technology - Z-Ray. Z-Ray gives developers unprecedented visibility into their code by tracking and displaying in a toolbar live and detailed info on how the various elements constructing their page are performing.
+This is a cluster-enabled version of a Dockerized Zend Server container. With Zend Server on Docker, you'll get your PHP applications up and running on a highly available PHP production environment which includes, amongst other features, a highly reliable PHP stack, application monitoring, troubleshooting, and the new and innovative new technology - Z-Ray. Z-Ray gives developers unprecedented visibility into their code by tracking and displaying in a toolbar live and detailed info on how the various elements constructing their page are performing.
 
-For development purposes we provide you with a trial license that is valid until July-31st-2016. For production use you must provide a valid Zend Server license using the instructions below in the Usage section.
+For development purposes we provide you with a time limited trial license. For production use you must provide a valid Zend Server license using the instructions below in the Usage section.
 
 ## Usage
 
@@ -82,16 +83,15 @@ Zend Server is shared on [Docker-Hub] as **php-zendserver**.
 
 To start a single Zend Server instance, execute:
 
-	    $ docker run php-zendserver
+	    $ docker run s390x/php-zendserver
 
 -	You can specify the PHP and Zend Server version by adding ':<php-version>' or ':&lt;ZS-version&gt;-php&lt;version&gt;' to the 'docker run' command.
 
 		for example: 
-		$docker run php-zendserver:8.0-php5.6
+		$docker run s390x/php-zendserver:8.5-php5.6
 
 #### Availible versions:
 
--	Zend Server 7
 -	Zend Server 8
 -	Zend Server 9 (With PHP 7 GA)(Default version)
 
@@ -99,11 +99,11 @@ To start a single Zend Server instance, execute:
 
 To start a Zend Server cluster, execute the following command for each cluster node:
 
-	    $ docker run -e MYSQL_HOSTNAME=<db-ip> -e MYSQL_PORT=3306 -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<password> -e MYSQL_DBNAME=zend php-zendserver
+	    $ docker run -e MYSQL_HOSTNAME=<db-ip> -e MYSQL_PORT=3306 -e MYSQL_USERNAME=<username> -e MYSQL_PASSWORD=<password> -e MYSQL_DBNAME=zend s390x/php-zendserver
 
 #### Bring your own license
 
-To use your own Zend Server license: $ docker run php-zendserver -e ZEND_LICENSE_KEY=<license-key> -e ZEND_LICENSE_ORDER=<order-number>
+To use your own Zend Server license: $ docker run s390x/php-zendserver -e ZEND_LICENSE_KEY=<license-key> -e ZEND_LICENSE_ORDER=<order-number>
 
 #### Launching the Container from Dockerfile
 
@@ -131,7 +131,7 @@ Once started, the container will output the information required to access the P
 
 To access the container **remotely**, port forwarding must be configured, either manually or using docker. For example, this command redirects port 80 to port 88, and port 10081 (Zend Server UI port) to port 10088:
 
-	    $ docker run -p 88:80 -p 10088:10081 php-zendserver
+	    $ docker run -p 88:80 -p 10088:10081 s390x/php-zendserver
 
 ##### For clustered instances:
 
